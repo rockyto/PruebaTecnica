@@ -41,7 +41,17 @@ class Helper{
         
         return jsonString
     }
-
+    
+    func calcAge(birthday: String) -> Int {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-mm-dd"
+        let birthdayDate = dateFormater.date(from: birthday)
+        let calendar: NSCalendar! = NSCalendar(calendarIdentifier: .gregorian)
+        let now = Date()
+        let calcAge = calendar.components(.year, from: birthdayDate!, to: now, options: [])
+        let age = calcAge.year
+        return age!
+    }
     
     func showAlert(title: String, message: String, in vc: UIViewController) {
         
