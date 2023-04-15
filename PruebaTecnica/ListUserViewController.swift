@@ -7,7 +7,8 @@
 import UIKit
 
 class ListUserViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConsultModelProtocol, UISearchBarDelegate {
-
+    
+    lazy var spinningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
     @IBOutlet var tableUsers: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
@@ -28,6 +29,8 @@ class ListUserViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableUsers.dataSource = self
 
         self.searchBar.delegate = self
+        spinningActivity?.labelText = "Descargando"
+        spinningActivity?.detailsLabelText = "un momento por favor"
     }
 
     func itemConsult(Consult: [DetailUser]) {
@@ -49,7 +52,7 @@ class ListUserViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.lblName!.text = item.nombre
             cell.lblApePa!.text = item.apellidoPaterno
             cell.lblApeMa!.text = item.apellidoMaterno
-       
+        spinningActivity?.hide(true)
         return cell
     }
 
