@@ -18,6 +18,10 @@
 		9332B80729E9FC40006D4CCB /* PruebaTecnicaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B80629E9FC40006D4CCB /* PruebaTecnicaUITestsLaunchTests.swift */; };
 		9332B81429E9FD83006D4CCB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B81329E9FD83006D4CCB /* Helper.swift */; };
 		9332B81629EA5D7F006D4CCB /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B81529EA5D7F006D4CCB /* Models.swift */; };
+		9332B81929EB06F1006D4CCB /* ConsultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B81829EB06F1006D4CCB /* ConsultModel.swift */; };
+		9332B82129EB0D63006D4CCB /* DetailUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B82029EB0D63006D4CCB /* DetailUser.swift */; };
+		9332B82329EB1868006D4CCB /* ListUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B82229EB1868006D4CCB /* ListUserViewController.swift */; };
+		9332B82529EB1A1A006D4CCB /* ConsultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B82429EB1A1A006D4CCB /* ConsultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		9332B80629E9FC40006D4CCB /* PruebaTecnicaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaTecnicaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9332B81329E9FD83006D4CCB /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		9332B81529EA5D7F006D4CCB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		9332B81829EB06F1006D4CCB /* ConsultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultModel.swift; sourceTree = "<group>"; };
+		9332B82029EB0D63006D4CCB /* DetailUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUser.swift; sourceTree = "<group>"; };
+		9332B82229EB1868006D4CCB /* ListUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUserViewController.swift; sourceTree = "<group>"; };
+		9332B82429EB1A1A006D4CCB /* ConsultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +114,10 @@
 				9332B7E329E9FC3D006D4CCB /* AppDelegate.swift */,
 				9332B7E529E9FC3D006D4CCB /* SceneDelegate.swift */,
 				9332B81329E9FD83006D4CCB /* Helper.swift */,
+				9332B81729EB068F006D4CCB /* Consulta */,
 				9332B7E729E9FC3D006D4CCB /* ViewController.swift */,
 				9332B81529EA5D7F006D4CCB /* Models.swift */,
+				9332B82229EB1868006D4CCB /* ListUserViewController.swift */,
 				9332B7E929E9FC3D006D4CCB /* Main.storyboard */,
 				9332B7EC29E9FC40006D4CCB /* Assets.xcassets */,
 				9332B7EE29E9FC40006D4CCB /* LaunchScreen.storyboard */,
@@ -131,6 +141,16 @@
 				9332B80629E9FC40006D4CCB /* PruebaTecnicaUITestsLaunchTests.swift */,
 			);
 			path = PruebaTecnicaUITests;
+			sourceTree = "<group>";
+		};
+		9332B81729EB068F006D4CCB /* Consulta */ = {
+			isa = PBXGroup;
+			children = (
+				9332B81829EB06F1006D4CCB /* ConsultModel.swift */,
+				9332B82029EB0D63006D4CCB /* DetailUser.swift */,
+				9332B82429EB1A1A006D4CCB /* ConsultTableViewCell.swift */,
+			);
+			path = Consulta;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +284,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9332B81929EB06F1006D4CCB /* ConsultModel.swift in Sources */,
+				9332B82529EB1A1A006D4CCB /* ConsultTableViewCell.swift in Sources */,
+				9332B82329EB1868006D4CCB /* ListUserViewController.swift in Sources */,
 				9332B7E829E9FC3D006D4CCB /* ViewController.swift in Sources */,
 				9332B7E429E9FC3D006D4CCB /* AppDelegate.swift in Sources */,
 				9332B7E629E9FC3D006D4CCB /* SceneDelegate.swift in Sources */,
+				9332B82129EB0D63006D4CCB /* DetailUser.swift in Sources */,
 				9332B81429E9FD83006D4CCB /* Helper.swift in Sources */,
 				9332B81629EA5D7F006D4CCB /* Models.swift in Sources */,
 			);

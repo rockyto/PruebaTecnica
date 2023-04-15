@@ -226,7 +226,7 @@
                             <constraint firstItem="nqy-kS-MBz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qF6-iB-o0O"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Registro" id="8dZ-Pt-Mrh"/>
+                    <tabBarItem key="tabBarItem" title="Registro" image="rectangle.and.pencil.and.ellipsis" catalog="system" id="8dZ-Pt-Mrh"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="1179" height="852"/>
                     <connections>
@@ -251,6 +251,91 @@
             </objects>
             <point key="canvasLocation" x="1373.2824427480916" y="2.8169014084507045"/>
         </scene>
+        <!--Buscar-->
+        <scene sceneID="fvN-sO-Dyz">
+            <objects>
+                <viewController id="mOl-YM-Vpr" customClass="ListUserViewController" customModule="PruebaTecnica" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YsE-wJ-j1k">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dTy-b1-Jj7">
+                                <rect key="frame" x="0.0" y="115" width="393" height="737"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellUser" rowHeight="100" id="AZB-Io-sC7" customClass="ConsultTableViewCell" customModule="PruebaTecnica" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AZB-Io-sC7" id="Kc1-fv-wUc">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPO-Uz-kUD">
+                                                    <rect key="frame" x="20" y="11" width="248" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIE-x4-BL6">
+                                                    <rect key="frame" x="20" y="40" width="149" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vf6-Bp-p8H">
+                                                    <rect key="frame" x="177" y="40" width="149" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblApeMa" destination="Vf6-Bp-p8H" id="VY3-IF-XUw"/>
+                                            <outlet property="lblApePa" destination="eIE-x4-BL6" id="hDh-BZ-paV"/>
+                                            <outlet property="lblName" destination="mPO-Uz-kUD" id="cpX-Hi-XhN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mOl-YM-Vpr" id="DPe-Qd-vsT"/>
+                                    <outlet property="delegate" destination="mOl-YM-Vpr" id="FpP-MP-izT"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" placeholder="Buscar nombre" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQb-Vs-i1j">
+                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="mOl-YM-Vpr" id="Wrs-CH-yVb"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="08B-7z-yUd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mQb-Vs-i1j" firstAttribute="top" secondItem="08B-7z-yUd" secondAttribute="top" id="IT4-Wz-aeI"/>
+                            <constraint firstItem="dTy-b1-Jj7" firstAttribute="leading" secondItem="08B-7z-yUd" secondAttribute="leading" id="aT6-Ke-0Wl"/>
+                            <constraint firstItem="mQb-Vs-i1j" firstAttribute="trailing" secondItem="08B-7z-yUd" secondAttribute="trailing" id="e3d-YW-M6z"/>
+                            <constraint firstItem="mQb-Vs-i1j" firstAttribute="leading" secondItem="08B-7z-yUd" secondAttribute="leading" id="g18-Ev-scX"/>
+                            <constraint firstItem="dTy-b1-Jj7" firstAttribute="top" secondItem="mQb-Vs-i1j" secondAttribute="bottom" id="jTk-54-N6g"/>
+                            <constraint firstAttribute="bottom" secondItem="dTy-b1-Jj7" secondAttribute="bottom" id="l86-NP-cf5"/>
+                            <constraint firstItem="dTy-b1-Jj7" firstAttribute="trailing" secondItem="08B-7z-yUd" secondAttribute="trailing" id="uYd-m7-f9J"/>
+                            <constraint firstItem="dTy-b1-Jj7" firstAttribute="top" secondItem="mQb-Vs-i1j" secondAttribute="bottom" id="xRq-bm-OOX"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Buscar" image="magnifyingglass" catalog="system" id="Ijz-LA-TUc"/>
+                    <connections>
+                        <outlet property="searchBar" destination="mQb-Vs-i1j" id="NHg-26-or2"/>
+                        <outlet property="tableUsers" destination="dTy-b1-Jj7" id="Hj9-3z-K2F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sDE-C1-WrZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773.28244274809163" y="695.77464788732402"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3z2-5V-nWn">
             <objects>
@@ -262,6 +347,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="mOl-YM-Vpr" kind="relationship" relationship="viewControllers" id="Z7P-2r-tS0"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="bfG-QR-CDF"/>
                     </connections>
                 </tabBarController>
@@ -271,6 +357,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="rectangle.and.pencil.and.ellipsis" catalog="system" width="128" height="80"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
