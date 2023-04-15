@@ -44,70 +44,41 @@ class ConsultModel: NSObject{
         
     }
     
-    func parseJSON(_ data: Data){
-        
+    func parseJSON(_ data: Data) {
         var resultFromServer: Any?
         resultFromServer = try? JSONSerialization.jsonObject(with: data, options: [])
-        if let respdict = resultFromServer as? [String:Any]{
-            
-            var jsonDi = NSDictionary()
-            
-            do{
-                jsonDi = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
-                
-                let parsedJSON = jsonDi
-                print("ParsedJSON: ", parsedJSON)
-            }catch{
-                
-            }
-        }else if let respArr = resultFromServer as? [Any]{
-            
-            var jsonResult = NSArray()
-            do{
-                jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-            }catch let error as NSError{
-                print(error)
-            }
-            
-            var jsoneElement = NSDictionary()
-            print(jsoneElement)
-            
-            let details = NSMutableArray()
-            
-            for i in 0 ..< jsonResult.count{
-                jsoneElement = jsonResult[i] as! NSDictionary
-                
+        if let respArr = resultFromServer as? [[String:Any]] {
+            let details = respArr.map { (dict) -> DetailUser in
                 let detail = DetailUser()
+                detail.id = dict["id"] as? Int
+                detail.nombre = dict["nombre"] as? String
+                detail.apellidoPaterno = dict["apellidoPaterno"] as? String
+                detail.apellidoMaterno = dict["apellidoMaterno"] as? String
+                detail.edad = dict["edad"] as? Int
+                detail.email = dict["email"] as? String
+                detail.fechaNac = dict["fechaNac"] as? String
+                let datosDict = dict["datos"] as? [String:Any]
                 
-                let id = jsoneElement["id"]
-                let nombre = jsoneElement["nombre"]
-                let apellidoPaterno = jsoneElement["apellidoPaterno"]
-                let apellidoMaterno = jsoneElement["apellidoMaterno"]
-                let edad = jsoneElement["edad"]
-                let email = jsoneElement["email"]
-                let fechaNac = jsoneElement["fechaNac"]
-                let datos = jsoneElement["datos"]
+                let datos = Datos()
+                datos.calle = datosDict?["calle"] as? String
+                datos.numero = datosDict?["numero"] as? String
+                datos.colonia = datosDict?["colonia"] as? String
+                datos.delegacion = datosDict?["delegacion"] as? String
+                datos.estado = datosDict?["estado"] as? String
+                datos.cp = datosDict?["cp"] as? String
+                datos.imagen = datosDict?["imagen"] as? String
                 
-                detail.id = id as? Int
-                detail.nombre = nombre as? String
-                detail.apellidoPaterno = apellidoPaterno as? String
-                detail.apellidoMaterno = apellidoMaterno as? String
-                detail.edad = edad as? Int
-                detail.email = email as? String
-                detail.fechaNac = fechaNac as? String
-                detail.datos = datos as? String
+                detail.datos = datos
                 
-                details.add(detail)
+                return detail
             }
-            DispatchQueue.main.async(execute: { () -> Void in
-                self.TheDelegate.itemConsult(Consult: details as! [DetailUser])
-            })
-        }
-        
-        else if let stringRespt = String(data: data, encoding: .utf8){
             
+            DispatchQueue.main.async {
+                self.TheDelegate.itemConsult(Consult: details)
+            }
         }
     }
+
     
     
 }
