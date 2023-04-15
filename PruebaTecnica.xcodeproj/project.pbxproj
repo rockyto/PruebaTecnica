@@ -16,6 +16,8 @@
 		9332B7FB29E9FC40006D4CCB /* PruebaTecnicaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B7FA29E9FC40006D4CCB /* PruebaTecnicaTests.swift */; };
 		9332B80529E9FC40006D4CCB /* PruebaTecnicaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B80429E9FC40006D4CCB /* PruebaTecnicaUITests.swift */; };
 		9332B80729E9FC40006D4CCB /* PruebaTecnicaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B80629E9FC40006D4CCB /* PruebaTecnicaUITestsLaunchTests.swift */; };
+		9332B81429E9FD83006D4CCB /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B81329E9FD83006D4CCB /* Helper.swift */; };
+		9332B81629EA5D7F006D4CCB /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332B81529EA5D7F006D4CCB /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		9332B80029E9FC40006D4CCB /* PruebaTecnicaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PruebaTecnicaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9332B80429E9FC40006D4CCB /* PruebaTecnicaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaTecnicaUITests.swift; sourceTree = "<group>"; };
 		9332B80629E9FC40006D4CCB /* PruebaTecnicaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaTecnicaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9332B81329E9FD83006D4CCB /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		9332B81529EA5D7F006D4CCB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,9 @@
 			children = (
 				9332B7E329E9FC3D006D4CCB /* AppDelegate.swift */,
 				9332B7E529E9FC3D006D4CCB /* SceneDelegate.swift */,
+				9332B81329E9FD83006D4CCB /* Helper.swift */,
 				9332B7E729E9FC3D006D4CCB /* ViewController.swift */,
+				9332B81529EA5D7F006D4CCB /* Models.swift */,
 				9332B7E929E9FC3D006D4CCB /* Main.storyboard */,
 				9332B7EC29E9FC40006D4CCB /* Assets.xcassets */,
 				9332B7EE29E9FC40006D4CCB /* LaunchScreen.storyboard */,
@@ -261,6 +267,8 @@
 				9332B7E829E9FC3D006D4CCB /* ViewController.swift in Sources */,
 				9332B7E429E9FC3D006D4CCB /* AppDelegate.swift in Sources */,
 				9332B7E629E9FC3D006D4CCB /* SceneDelegate.swift in Sources */,
+				9332B81429E9FD83006D4CCB /* Helper.swift in Sources */,
+				9332B81629EA5D7F006D4CCB /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
