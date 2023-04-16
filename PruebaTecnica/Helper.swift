@@ -42,7 +42,7 @@ class Helper{
         return jsonString
     }
     
-    func calcAge(birthday: String) -> Int {
+    func caculateAge(birthday: String) -> Int {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "yyyy-mm-dd"
         let birthdayDate = dateFormater.date(from: birthday)

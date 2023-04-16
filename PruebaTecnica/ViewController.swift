@@ -62,6 +62,18 @@ class ViewController: UIViewController, UITextFieldDelegate{
         cornerRadius(for:btnContinuaContact)
         cornerRadius(for:btnFinaliza)
         
+        padding(for: txtNameUser)
+        padding(for: txtApePat)
+        padding(for: txtApeMat)
+        padding(for: txtFechNac)
+        padding(for: txtMail)
+        padding(for: txtCalleAddress)
+        padding(for: txtNumAddress)
+        padding(for: txtColoniaAddresss)
+        padding(for: txtCiudadAddress)
+        padding(for: txtEstadoAdreess)
+        padding(for: txtCPAddress)
+        
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.handle(_:)))
         swipe.direction = .right
         self.view.addGestureRecognizer(swipe)
@@ -73,7 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         formAdress.constant = self.view.frame.width
         
         let doneButton = UIBarButtonItem(title: "Listo", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.okPicker))
-     
+        
         pickerDate = UIDatePicker()
         pickerDate.datePickerMode = .date
         pickerDate.maximumDate = Calendar.current.date(bySetting: .day, value: 0, of: Date())
@@ -89,7 +101,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         if #available(iOS 13.4, *) {
             
             pickerDate.preferredDatePickerStyle = .wheels
-
+            
             
         }else{
             
@@ -101,11 +113,17 @@ class ViewController: UIViewController, UITextFieldDelegate{
     @objc func okPicker(){
         self.view.endEditing(true)
     }
-    
+    func padding(for textField: UITextField){
+        
+        let blankView = UIView.init(frame: CGRect(x:0, y:0, width: 10, height: -10))
+        textField.leftView = blankView
+        textField.leftViewMode = .always
+        
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         txtFechNac.resignFirstResponder()
-    
+        
         
     }
     @objc func datePickerDidChange(_ pickerFechaStart: UIDatePicker){
@@ -126,7 +144,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func formPagePersonalData_clicked(_ sender: Any){
         
-        
         txtNameUser.resignFirstResponder()
         let position = CGPoint(x: self.view.frame.width, y: 0)
         scrollView.setContentOffset(position, animated: true)
@@ -141,7 +158,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         if helper.isValid(email: txtMail.text!) == false{
             helper.showAlert(title: "Atención", message: "Mail no valido, ingrese correctamente su cuenta de correo electrónico", in: self)
         }else{
-            print("Mail valido")
+            
             let position2 = CGPoint(x: self.view.frame.width * 2, y: 0)
             scrollView.setContentOffset(position2, animated: true)
         }
@@ -164,13 +181,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
             
         }
     }
-    func padding(for textField: UITextField){
-        
-        let blankView = UIView.init(frame: CGRect(x:0, y:0, width: 10, height: -10))
-        textField.leftView = blankView
-        textField.leftViewMode = .always
-        
-    }
+    
     
     func cornerRadius(for view: UIView){
         view.layer.cornerRadius = 5
@@ -178,9 +189,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     func sendData(){
         
-        let laEdad:Int = 0
-        
-        let dataUsers = DataUser(nombre: txtNameUser.text!, apellidoPaterno: txtApePat.text!, apellidoMaterno: txtApeMat.text!, fechaNac: txtFechNac.text!, email: txtMail.text!, edad: laEdad, datos: DataDatos(calle: txtCalleAddress.text!, colonia: txtColoniaAddresss.text!, numero: txtNumAddress.text!, delegacion: txtCiudadAddress.text!, estado: txtEstadoAdreess.text!, cp: txtCPAddress.text!))
+        let dataUsers = DataUser(nombre: txtNameUser.text!, apellidoPaterno: txtApePat.text!, apellidoMaterno: txtApeMat.text!, fechaNac: txtFechNac.text!, email: txtMail.text!, edad: helper.caculateAge(birthday: txtFechNac.text!), datos: DataDatos(calle: txtCalleAddress.text!, colonia: txtColoniaAddresss.text!, numero: txtNumAddress.text!, delegacion: txtCiudadAddress.text!, estado: txtEstadoAdreess.text!, cp: txtCPAddress.text!))
         if let jsonString = helper.createJSON(from: dataUsers){
             
             let url = URL(string: helper.host)!
@@ -241,8 +250,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
                         }else{
                             helper.showAlert(title: "Error", message: "No se pudo registrar el usuario", in: self)
                         }
-                        
-                        
                         
                     }catch{
                         print(error.localizedDescription)
