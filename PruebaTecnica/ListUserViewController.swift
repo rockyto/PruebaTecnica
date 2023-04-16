@@ -54,7 +54,7 @@ class ListUserViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.lblMail!.text = item.email
         
         if item.datos?.imagen != nil{
-            if let imageData = Data(base64Encoded: (item.datos?.imagen ?? "")), let image = UIImage(data: imageData) {
+            if let base64String = item.datos?.imagen, let imageData = Data(base64Encoded: base64String.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")), let image = UIImage(data: imageData) {
                 cell.imageSelfie.image = image
             }else{
                 cell.imageSelfie.image = UIImage(named: "defaultImage")
@@ -67,7 +67,8 @@ class ListUserViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-       
+        let item: DetailUser = self.filteredItems[indexPath.row]
+        print(item.datos?.imagen ?? "")
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
