@@ -10,6 +10,9 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate{
     
     lazy var spinningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+    let helper = Helper()
+    
+    var currentTextField = UITextField()
     
     @IBOutlet weak var formPersonalData: NSLayoutConstraint!
     @IBOutlet weak var formContact: NSLayoutConstraint!
@@ -68,13 +71,20 @@ class ViewController: UIViewController, UITextFieldDelegate{
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func textFieldDidChangeSelection(_ textField: UITextField) {
+        
+    }
+    
     @IBAction func formPagePersonalData_clicked(_ sender: Any){
         
-       
-            txtNameUser.resignFirstResponder()
-            let position = CGPoint(x: self.view.frame.width, y: 0)
-            scrollView.setContentOffset(position, animated: true)
         
+        txtNameUser.resignFirstResponder()
+        let position = CGPoint(x: self.view.frame.width, y: 0)
+        scrollView.setContentOffset(position, animated: true)
+        
+    }
+    @IBAction func btnFinishSaveData(_ sender: Any) {
+        sendData()
     }
     
     @IBAction func formPageContact_clicked(_ sender: Any){
@@ -97,7 +107,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         if current_x > 0{
             
             scrollView.setContentOffset(new_x, animated: true)
-        
+            
         }
     }
     func padding(for textField: UITextField){
@@ -114,9 +124,54 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     func sendData(){
         
+        let laEdad:Int = 0
+        
+        let dataUsers = DataUser(nombre: txtNameUser.text!, apellidoPaterno: txtApePat.text!, apellidoMaterno: txtApeMat.text!, fechaNac: txtFechNac.text!, email: txtMail.text!, edad: laEdad, datos: DataDatos(calle: txtCalleAddress.text!, colonia: txtColoniaAddresss.text!, numero: txtNumAddress.text!, delegacion: txtCiudadAddress.text!, estado: txtEstadoAdreess.text!, cp: txtCPAddress.text!))
+        if let jsonString = helper.createJSON(from: dataUsers){
+           
+            let url = URL(string: helper.host)!
+            let body = jsonString
+            
+            var request = URLRequest(url: url)
+            request.httpBody = body.data(using: .utf8)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("api.devdicio.net", forHTTPHeaderField: "Host")
+            request.addValue("J38b4XQNLErVatKIh4oP1jw9e_wYWkS86Y04TMNP", forHTTPHeaderField: "xc-token")
+            
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                DispatchQueue.main.async { [self] in
+                    if error != nil{
+                        helper.showAlert(title: "Error de servidor", message: error!.localizedDescription, in: self)
+                        return
+                    }
+                    do{
+                        guard let data = data else{
+                            
+                            helper.showAlert(title: "Error de datos", message: error!.localizedDescription, in: self)
+                            return
+                            
+                        }
+                        let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary
+                        
+                        guard let parsedJSON = json else{
+                            print("Error de parseo")
+                            return
+                        }
+                        print(parsedJSON)
+                        
+                    }catch{
+                        print(error.localizedDescription)
+                    }
+                }
+            }.resume()
+            
+        }else{
+            print("Error al crear el JSON")
+        }
         
     }
-
-
+    
+    
 }
 

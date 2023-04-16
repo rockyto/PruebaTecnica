@@ -32,9 +32,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="dvb-5a-vIk"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="0Gf-uI-H3u"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fecha de nacimiento" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BE9-K8-tmA">
                                                         <rect key="frame" x="21.333333333333343" y="311" width="350" height="34"/>
@@ -42,9 +45,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="VIH-hU-5m0"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="gid-FD-yAe"/>
+                                                        </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGU-ay-3fT">
                                                         <rect key="frame" x="20" y="400" width="352" height="35"/>
@@ -63,9 +69,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="Rkl-F8-Rgj"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="vmh-We-8H4"/>
+                                                        </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datos personales" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96M-1f-yQw">
                                                         <rect key="frame" x="69" y="100" width="255" height="36"/>
@@ -74,14 +83,17 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Apellido paterno" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1j-rM-0L7">
-                                                        <rect key="frame" x="21.333333333333332" y="251" width="168" height="34"/>
+                                                        <rect key="frame" x="21.333333333333329" y="251" width="168" height="34"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="mM4-v8-cow"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="65f-LL-bQV"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -127,9 +139,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="7mx-v1-CZL"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="LQ7-VR-Clv"/>
+                                                        </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jC4-fF-x6L">
                                                         <rect key="frame" x="128" y="100" width="136" height="36"/>
@@ -167,9 +182,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="B6s-V5-itj"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="address-line1"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="qcY-F0-NrL"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Estado" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xam-ZS-j0a">
                                                         <rect key="frame" x="13" y="296" width="168" height="34"/>
@@ -177,9 +195,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="oBr-sH-HT8"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="address-level1"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="ehg-V1-4RS"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Colonia" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hQX-Jg-rlt">
                                                         <rect key="frame" x="13" y="236" width="168" height="34"/>
@@ -187,9 +208,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="n5R-dM-j5H"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="location"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="67a-R4-owl"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Delegación" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HrS-qK-c9G">
                                                         <rect key="frame" x="210" y="236" width="168" height="34"/>
@@ -197,9 +221,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="CQF-cw-pI3"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="address-level2"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="bbr-AX-YwM"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Número" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNK-xG-J3i">
                                                         <rect key="frame" x="210" y="179" width="168" height="34"/>
@@ -207,9 +234,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="R2O-hr-coU"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="tzC-wM-ecl"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="C.P" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qCa-Ya-ASX">
                                                         <rect key="frame" x="210" y="296" width="168" height="34"/>
@@ -217,9 +247,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="34" id="P6h-ag-BWC"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="postal-code"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChangeSelection:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="qgw-Jh-YPQ"/>
+                                                        </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VV7-zC-HWv">
                                                         <rect key="frame" x="21" y="400" width="350" height="35"/>
@@ -230,6 +263,9 @@
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Finalizar"/>
+                                                        <connections>
+                                                            <action selector="btnFinishSaveData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bwl-yI-HqO"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
