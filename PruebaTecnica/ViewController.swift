@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate{
     
+    var dateString: String = ""
+    var date = DateFormatter()
+    var pickerDate: UIDatePicker!
+    
     lazy var spinningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
     let helper = Helper()
     
@@ -68,9 +72,54 @@ class ViewController: UIViewController, UITextFieldDelegate{
         formContact.constant = self.view.frame.width
         formAdress.constant = self.view.frame.width
         
+        let doneButton = UIBarButtonItem(title: "Listo", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.okPicker))
+     
+        pickerDate = UIDatePicker()
+        pickerDate.datePickerMode = .date
+        pickerDate.maximumDate = Calendar.current.date(bySetting: .day, value: 0, of: Date())
+        pickerDate.maximumDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())
+        pickerDate.addTarget(self, action: #selector(self.datePickerDidChange(_:)), for: .valueChanged)
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = .tintColor
+        toolBar.sizeToFit()
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        if #available(iOS 13.4, *) {
+            
+            pickerDate.preferredDatePickerStyle = .wheels
+
+            
+        }else{
+            
+        }
+        txtFechNac.inputView = pickerDate
+        txtFechNac.inputAccessoryView = toolBar
         // Do any additional setup after loading the view.
     }
+    @objc func okPicker(){
+        self.view.endEditing(true)
+    }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        txtFechNac.resignFirstResponder()
+    
+        
+    }
+    @objc func datePickerDidChange(_ pickerFechaStart: UIDatePicker){
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.full
+        
+        if txtFechNac.isEditing == true {
+            txtFechNac.text = formatter.string(from: pickerDate.date)
+            let DateSelected = DateFormatter()
+            DateSelected.dateFormat = "yyyy-MM-dd"
+            dateString = DateSelected.string(from: pickerDate.date)
+            
+        }
+    }
     @IBAction func textFieldDidChangeSelection(_ textField: UITextField) {
         
     }
@@ -133,7 +182,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         let dataUsers = DataUser(nombre: txtNameUser.text!, apellidoPaterno: txtApePat.text!, apellidoMaterno: txtApeMat.text!, fechaNac: txtFechNac.text!, email: txtMail.text!, edad: laEdad, datos: DataDatos(calle: txtCalleAddress.text!, colonia: txtColoniaAddresss.text!, numero: txtNumAddress.text!, delegacion: txtCiudadAddress.text!, estado: txtEstadoAdreess.text!, cp: txtCPAddress.text!))
         if let jsonString = helper.createJSON(from: dataUsers){
-           
+            
             let url = URL(string: helper.host)!
             let body = jsonString
             
@@ -172,7 +221,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
                                 
                                 let position = CGPoint(x:0, y:0)
                                 self.scrollView.setContentOffset(position, animated: true)
-
+                                
                                 self.txtNameUser.text = ""
                                 self.txtApePat.text = ""
                                 self.txtApeMat.text = ""
@@ -192,7 +241,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
                         }else{
                             helper.showAlert(title: "Error", message: "No se pudo registrar el usuario", in: self)
                         }
-              
+                        
                         
                         
                     }catch{
@@ -211,9 +260,9 @@ class ViewController: UIViewController, UITextFieldDelegate{
 }
 
 extension HTTPURLResponse {
-     func isResponseOK() -> Bool {
-      return (200...299).contains(self.statusCode)
-     }
+    func isResponseOK() -> Bool {
+        return (200...299).contains(self.statusCode)
+    }
     func isResponseFail() -> Bool{
         return (400...409).contains(self.statusCode)
     }
