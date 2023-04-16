@@ -165,6 +165,36 @@ class ViewController: UIViewController, UITextFieldDelegate{
                         }
                         print(parsedJSON)
                         
+                        if let response = response as? HTTPURLResponse, response.isResponseOK(){
+                            
+                            let myAlert = UIAlertController(title: "Gracias", message: "Registro Exitoso", preferredStyle: UIAlertController.Style.alert)
+                            let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: {(alertAction) in
+                                
+                                let position = CGPoint(x:0, y:0)
+                                self.scrollView.setContentOffset(position, animated: true)
+
+                                self.txtNameUser.text = ""
+                                self.txtApePat.text = ""
+                                self.txtApeMat.text = ""
+                                self.txtFechNac.text = ""
+                                self.txtMail.text = ""
+                                self.txtCalleAddress.text = ""
+                                self.txtNumAddress.text = ""
+                                self.txtColoniaAddresss.text = ""
+                                self.txtCiudadAddress.text = ""
+                                self.txtEstadoAdreess.text = ""
+                                self.txtCPAddress.text = ""
+                                
+                            })
+                            
+                            myAlert.addAction(okAction)
+                            self.present(myAlert, animated:true, completion: nil)
+                        }else{
+                            helper.showAlert(title: "Error", message: "No se pudo registrar el usuario", in: self)
+                        }
+              
+                        
+                        
                     }catch{
                         print(error.localizedDescription)
                     }
@@ -180,3 +210,11 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
 }
 
+extension HTTPURLResponse {
+     func isResponseOK() -> Bool {
+      return (200...299).contains(self.statusCode)
+     }
+    func isResponseFail() -> Bool{
+        return (400...409).contains(self.statusCode)
+    }
+}
