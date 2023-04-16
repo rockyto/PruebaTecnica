@@ -10,9 +10,10 @@ import UIKit
 class ConsultTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblApePa: UILabel!
-    @IBOutlet weak var lblApeMa: UILabel!
+    @IBOutlet weak var lblEdad: UILabel!
+    @IBOutlet weak var lblMail: UILabel!
 
+    @IBOutlet weak var imageSelfie: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
