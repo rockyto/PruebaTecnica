@@ -89,9 +89,14 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func formPageContact_clicked(_ sender: Any){
         
-        txtMail.resignFirstResponder()
-        let position2 = CGPoint(x: self.view.frame.width * 2, y: 0)
-        scrollView.setContentOffset(position2, animated: true)
+        if helper.isValid(email: txtMail.text!) == false{
+            helper.showAlert(title: "Atención", message: "Mail no valido, ingrese correctamente su cuenta de correo electrónico", in: self)
+        }else{
+            print("Mail valido")
+            let position2 = CGPoint(x: self.view.frame.width * 2, y: 0)
+            scrollView.setContentOffset(position2, animated: true)
+        }
+        
         
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
