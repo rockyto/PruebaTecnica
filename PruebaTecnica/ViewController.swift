@@ -43,7 +43,18 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        txtNameUser.delegate = self
+        txtApePat.delegate = self
+        txtApeMat.delegate = self
+        txtFechNac.delegate = self
+        txtMail.delegate = self
+        txtCalleAddress.delegate = self
+        txtNumAddress.delegate = self
+        txtColoniaAddresss.delegate = self
+        txtCiudadAddress.delegate = self
+        txtEstadoAdreess.delegate = self
+        txtCPAddress.delegate = self
+
         cornerRadius(for:txtNameUser)
         cornerRadius(for:txtApePat)
         cornerRadius(for:txtApeMat)
@@ -166,6 +177,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        textField.resignFirstResponder()
         return true
     }
     @objc func handle(_ gesture: UISwipeGestureRecognizer){
