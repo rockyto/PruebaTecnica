@@ -41,8 +41,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var btnContinuaContact: UIButton!
     @IBOutlet weak var btnFinaliza: UIButton!
     
-    /*
-     @IBOutlet weak var contactData: NSLayoutConstraint!*/
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -108,7 +106,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         }
         txtFechNac.inputView = pickerDate
         txtFechNac.inputAccessoryView = toolBar
-        // Do any additional setup after loading the view.
+        
     }
     @objc func okPicker(){
         self.view.endEditing(true)
@@ -135,6 +133,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
             let DateSelected = DateFormatter()
             DateSelected.dateFormat = "yyyy-MM-dd"
             dateString = DateSelected.string(from: pickerDate.date)
+            print("La fecha seleccionada: ", dateString)
             
         }
     }
@@ -189,7 +188,10 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     func sendData(){
         
-        let dataUsers = DataUser(nombre: txtNameUser.text!, apellidoPaterno: txtApePat.text!, apellidoMaterno: txtApeMat.text!, fechaNac: txtFechNac.text!, email: txtMail.text!, edad: helper.caculateAge(birthday: txtFechNac.text!), datos: DataDatos(calle: txtCalleAddress.text!, colonia: txtColoniaAddresss.text!, numero: txtNumAddress.text!, delegacion: txtCiudadAddress.text!, estado: txtEstadoAdreess.text!, cp: txtCPAddress.text!))
+        let dataUsers = DataUser(nombre: txtNameUser.text!, apellidoPaterno: txtApePat.text!, apellidoMaterno: txtApeMat.text!, fechaNac: dateString, email: txtMail.text!, edad: helper.caculateAge(birthday: dateString), datos: DataDatos(calle: txtCalleAddress.text!, colonia: txtColoniaAddresss.text!, numero: txtNumAddress.text!, delegacion: txtCiudadAddress.text!, estado: txtEstadoAdreess.text!, cp: txtCPAddress.text!))
+        
+        print("El body JSON es:", helper.createJSON(from: dataUsers)!)
+        
         if let jsonString = helper.createJSON(from: dataUsers){
             
             let url = URL(string: helper.host)!
