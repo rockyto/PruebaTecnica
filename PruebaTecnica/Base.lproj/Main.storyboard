@@ -502,6 +502,7 @@
                                             <outlet property="lblEdad" destination="RZu-86-NWf" id="N9i-xT-x4p"/>
                                             <outlet property="lblMail" destination="llS-Y8-KYl" id="QDh-Qb-zom"/>
                                             <outlet property="lblName" destination="mPO-Uz-kUD" id="cpX-Hi-XhN"/>
+                                            <segue destination="W9K-pv-mqu" kind="show" identifier="showUserDetail" id="KxT-Rk-0Mx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -540,6 +541,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDE-C1-WrZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="772" y="739"/>
+        </scene>
+        <!--Datos User View Controller-->
+        <scene sceneID="pBf-fw-gSs">
+            <objects>
+                <viewController id="W9K-pv-mqu" customClass="DatosUserViewController" customModule="PruebaTecnica" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="TN0-gx-fRj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7KC-Nz-7uZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1703" y="739"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3z2-5V-nWn">

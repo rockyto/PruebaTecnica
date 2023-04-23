@@ -97,5 +97,28 @@ class ListUserViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableUsers.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showUserDetail" {
+            if let indexPath = tableUsers.indexPathForSelectedRow {
+                let selectedUser = filteredItems[indexPath.row]
+                let detailViewController = segue.destination as! DatosUserViewController
+                detailViewController.userName = selectedUser.nombre!
+                detailViewController.userApePat = selectedUser.apellidoPaterno!
+                detailViewController.userApeMat = selectedUser.apellidoMaterno!
+                detailViewController.userMail = selectedUser.email!
+                detailViewController.userEdad = selectedUser.edad!
+                detailViewController.userFechaNac = selectedUser.fechaNac!
+                detailViewController.userCalle = (selectedUser.datos?.calle!)!
+                detailViewController.userNumero = (selectedUser.datos?.colonia)!
+                detailViewController.userColonia = (selectedUser.datos?.delegacion)!
+                detailViewController.userDelegacion = (selectedUser.datos?.delegacion)!
+                detailViewController.userEstado = (selectedUser.datos?.estado)!
+                detailViewController.userCP = (selectedUser.datos?.cp)!
+                
+            }
+        }
+    }
+
+
     
 }
