@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var formPersonalData: NSLayoutConstraint!
     @IBOutlet weak var formContact: NSLayoutConstraint!
     @IBOutlet weak var formAdress: NSLayoutConstraint!
+    @IBOutlet weak var formPhoto:NSLayoutConstraint!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var content_width: NSLayoutConstraint!
@@ -87,7 +88,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         swipe.direction = .right
         self.view.addGestureRecognizer(swipe)
         
-        content_width.constant = self.view.frame.width * 3
+        content_width.constant = self.view.frame.width * 4
         
         formPersonalData.constant = self.view.frame.width
         formContact.constant = self.view.frame.width
@@ -150,6 +151,11 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     @IBAction func textFieldDidChangeSelection(_ textField: UITextField) {
         
+    }
+    
+    @IBAction func formPageAddress_clicked(_ sender: Any){
+        let position3 = CGPoint(x: self.view.frame.width * 3, y: 0)
+        scrollView.setContentOffset(position3, animated: true)
     }
     
     @IBAction func formPagePersonalData_clicked(_ sender: Any){
