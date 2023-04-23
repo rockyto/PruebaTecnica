@@ -24,4 +24,5 @@ struct DataDatos: Codable{
     var delegacion: String
     var estado: String
     var cp: String
+    var imagen: String
 }

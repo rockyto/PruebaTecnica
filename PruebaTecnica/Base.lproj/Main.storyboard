@@ -326,16 +326,37 @@
                                                             <action selector="btnFinishSaveData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nv5-aQ-r0z"/>
                                                         </connections>
                                                     </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wzq-Iy-Ods">
+                                                        <rect key="frame" x="77" y="144" width="238" height="238"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="238" id="SKs-nb-aHj"/>
+                                                            <constraint firstAttribute="width" constant="238" id="nwF-gM-YB5"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3i-PI-eRr">
+                                                        <rect key="frame" x="259" y="347" width="56" height="35"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="camera.fill" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N5F-zk-faR"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="wzq-Iy-Ods" secondAttribute="trailing" constant="78" id="428-qc-sDO"/>
                                                     <constraint firstItem="6hc-JU-yPc" firstAttribute="leading" secondItem="PPj-6c-iBb" secondAttribute="leading" constant="21" id="7WF-pk-wQ3"/>
-                                                    <constraint firstItem="6hc-JU-yPc" firstAttribute="top" secondItem="Skh-Om-SOl" secondAttribute="bottom" constant="264" id="Ees-33-h2V"/>
+                                                    <constraint firstItem="U3i-PI-eRr" firstAttribute="leading" secondItem="PPj-6c-iBb" secondAttribute="leading" constant="259" id="Lic-Nt-dQc"/>
+                                                    <constraint firstItem="6hc-JU-yPc" firstAttribute="top" secondItem="wzq-Iy-Ods" secondAttribute="bottom" constant="18" id="RlO-Ow-3Js"/>
                                                     <constraint firstAttribute="trailing" secondItem="Skh-Om-SOl" secondAttribute="trailing" constant="22" id="Vuo-BU-2TL"/>
                                                     <constraint firstItem="Skh-Om-SOl" firstAttribute="leading" secondItem="PPj-6c-iBb" secondAttribute="leading" constant="21" id="XSp-OD-PhY"/>
                                                     <constraint firstAttribute="trailing" secondItem="6hc-JU-yPc" secondAttribute="trailing" constant="22" id="fxz-mu-V45"/>
+                                                    <constraint firstItem="U3i-PI-eRr" firstAttribute="top" secondItem="Skh-Om-SOl" secondAttribute="bottom" constant="211" id="qGY-0K-QRk"/>
+                                                    <constraint firstAttribute="trailing" secondItem="U3i-PI-eRr" secondAttribute="trailing" constant="78" id="qxK-nB-kue"/>
                                                     <constraint firstAttribute="width" constant="393" id="t6d-6a-68M"/>
                                                     <constraint firstItem="Skh-Om-SOl" firstAttribute="top" secondItem="PPj-6c-iBb" secondAttribute="top" constant="100" id="t73-RK-RH2"/>
+                                                    <constraint firstItem="wzq-Iy-Ods" firstAttribute="leading" secondItem="PPj-6c-iBb" secondAttribute="leading" constant="77" id="yBw-8v-jHq"/>
+                                                    <constraint firstItem="wzq-Iy-Ods" firstAttribute="top" secondItem="Skh-Om-SOl" secondAttribute="bottom" constant="8" id="zff-ok-okq"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -397,6 +418,7 @@
                         <outlet property="formContact" destination="cmd-oC-Wbx" id="NJy-k0-lup"/>
                         <outlet property="formPersonalData" destination="AG4-fj-CQe" id="8V1-OH-atD"/>
                         <outlet property="formPhoto" destination="t6d-6a-68M" id="HQH-ob-KD9"/>
+                        <outlet property="imageView" destination="wzq-Iy-Ods" id="lyk-Xd-qXd"/>
                         <outlet property="scrollView" destination="nqy-kS-MBz" id="IGg-oI-mRN"/>
                         <outlet property="txtApeMat" destination="7PZ-Oc-1Sg" id="28W-c0-6cQ"/>
                         <outlet property="txtApePat" destination="s1j-rM-0L7" id="wLV-ev-rpa"/>
@@ -413,7 +435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2603" y="3"/>
+            <point key="canvasLocation" x="2601.5267175572517" y="2.8169014084507045"/>
         </scene>
         <!--Buscar-->
         <scene sceneID="fvN-sO-Dyz">
@@ -517,7 +539,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDE-C1-WrZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.28244274809163" y="695.77464788732402"/>
+            <point key="canvasLocation" x="772" y="739"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3z2-5V-nWn">
@@ -536,7 +558,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tP8-Yw-a4N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="38.931297709923662" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="-182" y="4"/>
         </scene>
         <!--Registro-->
         <scene sceneID="5hD-1Q-ftR">
@@ -555,10 +577,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqS-Ed-y6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="978" y="4"/>
+            <point key="canvasLocation" x="773" y="2"/>
         </scene>
     </scenes>
     <resources>
+        <image name="camera.fill" catalog="system" width="128" height="93"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="rectangle.and.pencil.and.ellipsis" catalog="system" width="128" height="80"/>
         <namedColor name="AccentColor">

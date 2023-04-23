@@ -7,17 +7,20 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate{
+class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    let helper = Helper()
     
     var dateString: String = ""
     var date = DateFormatter()
     var pickerDate: UIDatePicker!
+    var laImagen: String = ""
     
     lazy var spinningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-    let helper = Helper()
     
     var currentTextField = UITextField()
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var formPersonalData: NSLayoutConstraint!
     @IBOutlet weak var formContact: NSLayoutConstraint!
     @IBOutlet weak var formAdress: NSLayoutConstraint!
@@ -56,7 +59,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         txtCiudadAddress.delegate = self
         txtEstadoAdreess.delegate = self
         txtCPAddress.delegate = self
-
+        
         cornerRadius(for:txtNameUser)
         cornerRadius(for:txtApePat)
         cornerRadius(for:txtApeMat)
@@ -86,14 +89,15 @@ class ViewController: UIViewController, UITextFieldDelegate{
         padding(for: txtEstadoAdreess)
         padding(for: txtCPAddress)
         
+        content_width.constant = self.view.frame.width * 4
+        
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.handle(_:)))
         swipe.direction = .right
         self.view.addGestureRecognizer(swipe)
         
-        content_width.constant = self.view.frame.width * 4
-        
         formPersonalData.constant = self.view.frame.width
         formContact.constant = self.view.frame.width
+        formAdress.constant = self.view.frame.width
         formAdress.constant = self.view.frame.width
         
         let doneButton = UIBarButtonItem(title: "Listo", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.okPicker))
@@ -103,6 +107,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         pickerDate.maximumDate = Calendar.current.date(bySetting: .day, value: 0, of: Date())
         pickerDate.maximumDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())
         pickerDate.addTarget(self, action: #selector(self.datePickerDidChange(_:)), for: .valueChanged)
+        
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
@@ -110,21 +115,106 @@ class ViewController: UIViewController, UITextFieldDelegate{
         toolBar.sizeToFit()
         toolBar.setItems([doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
+        
         if #available(iOS 13.4, *) {
             
             pickerDate.preferredDatePickerStyle = .wheels
             
-            
         }else{
             
         }
+        
         txtFechNac.inputView = pickerDate
         txtFechNac.inputAccessoryView = toolBar
         
     }
+    
     @objc func okPicker(){
+        
         self.view.endEditing(true)
+        
     }
+    
+    @IBAction func selectPhoto(_ sender: Any){
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    func saveImage(image: UIImage) -> URL? {
+        
+        if let data = image.jpegData(compressionQuality: 1.0) {
+            let filename = getDocumentsDirectory().appendingPathComponent("image.jpg")
+            try? data.write(to: filename)
+            return filename
+        }
+        
+        return nil
+        
+    }
+    
+    
+    func getDocumentsDirectory() -> URL {
+        
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+        
+    }
+    
+    
+    func scaleImageToSize(image: UIImage, size: CGSize) -> UIImage {
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+        
+    }
+    
+    func convertImageToBase64(image: UIImage) -> String? {
+        
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            let base64String = imageData.base64EncodedString(options: [])
+            return base64String
+        }
+        
+        return nil
+        
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            
+            let scaledImage = scaleImageToSize(image: image, size: CGSize(width: 300, height: 300))
+            
+            imageView.image = scaledImage
+            
+            if let base64String = convertImageToBase64(image: scaledImage) {
+                print("La foto en Base64: \(base64String)")
+                saveImage(image: scaledImage)
+                laImagen = base64String
+                
+            }
+            
+            dismiss(animated: true, completion: nil)
+        }
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     func padding(for textField: UITextField){
         
         let blankView = UIView.init(frame: CGRect(x:0, y:0, width: 10, height: -10))
@@ -132,13 +222,16 @@ class ViewController: UIViewController, UITextFieldDelegate{
         textField.leftViewMode = .always
         
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         self.view.endEditing(true)
         txtFechNac.resignFirstResponder()
         
-        
     }
+    
     @objc func datePickerDidChange(_ pickerFechaStart: UIDatePicker){
+        
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.full
         
@@ -150,14 +243,11 @@ class ViewController: UIViewController, UITextFieldDelegate{
             print("La fecha seleccionada: ", dateString)
             
         }
-    }
-    @IBAction func textFieldDidChangeSelection(_ textField: UITextField) {
         
     }
     
-    @IBAction func formPageAddress_clicked(_ sender: Any){
-        let position3 = CGPoint(x: self.view.frame.width * 3, y: 0)
-        scrollView.setContentOffset(position3, animated: true)
+    @IBAction func textFieldDidChangeSelection(_ textField: UITextField) {
+        
     }
     
     @IBAction func formPagePersonalData_clicked(_ sender: Any){
@@ -166,9 +256,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
         let position = CGPoint(x: self.view.frame.width, y: 0)
         scrollView.setContentOffset(position, animated: true)
         
-    }
-    @IBAction func btnFinishSaveData(_ sender: Any) {
-        sendData()
     }
     
     @IBAction func formPageContact_clicked(_ sender: Any){
@@ -183,11 +270,32 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         
     }
+    
+    @IBAction func formPageAddress_clicked(_ sender: Any){
+        
+        let position3 = CGPoint(x: self.view.frame.width * 3, y: 0)
+        scrollView.setContentOffset(position3, animated: true)
+        
+    }
+    
+    @IBAction func btnFinishSaveData(_ sender: Any) {
+        if laImagen == ""{
+            helper.showAlert(title: "Atención", message: "Aún no has cargado una foto", in: self)
+        }else{
+            sendData()
+        }
+        
+    }
+    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         self.view.endEditing(true)
         textField.resignFirstResponder()
         return true
+        
     }
+    
     @objc func handle(_ gesture: UISwipeGestureRecognizer){
         
         let current_x = scrollView.contentOffset.x
@@ -199,16 +307,21 @@ class ViewController: UIViewController, UITextFieldDelegate{
             scrollView.setContentOffset(new_x, animated: true)
             
         }
+        
     }
     
     
     func cornerRadius(for view: UIView){
+        
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
+        
     }
+    
+    
     func sendData(){
         
-        let dataUsers = DataUser(nombre: txtNameUser.text!, apellidoPaterno: txtApePat.text!, apellidoMaterno: txtApeMat.text!, fechaNac: dateString, email: txtMail.text!, edad: helper.caculateAge(birthday: dateString), datos: DataDatos(calle: txtCalleAddress.text!, colonia: txtColoniaAddresss.text!, numero: txtNumAddress.text!, delegacion: txtCiudadAddress.text!, estado: txtEstadoAdreess.text!, cp: txtCPAddress.text!))
+        let dataUsers = DataUser(nombre: txtNameUser.text!, apellidoPaterno: txtApePat.text!, apellidoMaterno: txtApeMat.text!, fechaNac: dateString, email: txtMail.text!, edad: helper.caculateAge(birthday: dateString), datos: DataDatos(calle: txtCalleAddress.text!, colonia: txtColoniaAddresss.text!, numero: txtNumAddress.text!, delegacion: txtCiudadAddress.text!, estado: txtEstadoAdreess.text!, cp: txtCPAddress.text!, imagen: laImagen))
         
         print("El body JSON es:", helper.createJSON(from: dataUsers)!)
         
@@ -284,15 +397,15 @@ class ViewController: UIViewController, UITextFieldDelegate{
         }
         
     }
-    
-    
 }
 
 extension HTTPURLResponse {
+    
     func isResponseOK() -> Bool {
         return (200...299).contains(self.statusCode)
     }
     func isResponseFail() -> Bool{
         return (400...409).contains(self.statusCode)
     }
+    
 }
