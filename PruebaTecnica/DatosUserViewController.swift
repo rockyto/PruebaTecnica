@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import ImageRow
 import Eureka
+
 
 class DatosUserViewController: FormViewController {
     
@@ -26,14 +28,25 @@ class DatosUserViewController: FormViewController {
     var userDelegacion: String = ""
     var userCP: String = ""
     var userImagen: String = ""
-
+    
+    var selfieImage: UIImage?
+    
     override func viewDidLoad() {
-        
-       
         super.viewDidLoad()
         
-        form +++ Section("Datos personales")
-
+        
+        form +++ Section()
+        <<< ImageRow() { row in
+            row.title = "Foto de usuario"
+            row.value = selfieImage
+            
+            
+        }.cellUpdate { cell, row in
+            cell.accessoryView?.layer.cornerRadius = 25
+            //cell.accessoryView?.frame = CGRect(x: 100, y: 0, width: 100, height: 100)
+        }
+        +++ Section("Datos personales")
+        
         <<< TextRow(){ row in
             row.title = "Nombre"
             row.value = userName
@@ -60,13 +73,21 @@ class DatosUserViewController: FormViewController {
         }
         
         <<< TextRow(){ row in
+            
+            
             row.title = "Fecha de nacimiento"
-            row.value = userFechaNac
+            if userFechaNac != nil{
+                row.value = userFechaNac
+            }else{
+                row.value = "Sin dato"
+            }
+            
         }
         
         +++ Section("Contacto")
         <<< TextRow(){ row in
             row.title = "Correo electrónico"
+            
             row.value = userMail
         }
         
@@ -81,11 +102,14 @@ class DatosUserViewController: FormViewController {
         }
         <<< TextRow(){ row in
             row.title = "Colonia"
-            row.value = userColonia
+                row.value = userColonia
+          
+            
         }
         <<< TextRow(){ row in
             row.title = "Delegación"
             row.value = userDelegacion
+       
         }
         <<< TextRow(){ row in
             row.title = "Estado"
@@ -98,15 +122,16 @@ class DatosUserViewController: FormViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

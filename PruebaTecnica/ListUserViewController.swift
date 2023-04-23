@@ -102,18 +102,33 @@ class ListUserViewController: UIViewController, UITableViewDataSource, UITableVi
             if let indexPath = tableUsers.indexPathForSelectedRow {
                 let selectedUser = filteredItems[indexPath.row]
                 let detailViewController = segue.destination as! DatosUserViewController
+                
                 detailViewController.userName = selectedUser.nombre!
                 detailViewController.userApePat = selectedUser.apellidoPaterno!
                 detailViewController.userApeMat = selectedUser.apellidoMaterno!
                 detailViewController.userMail = selectedUser.email!
                 detailViewController.userEdad = selectedUser.edad!
+                
+                
                 detailViewController.userFechaNac = selectedUser.fechaNac!
-                detailViewController.userCalle = (selectedUser.datos?.calle!)!
-                detailViewController.userNumero = (selectedUser.datos?.colonia)!
-                detailViewController.userColonia = (selectedUser.datos?.delegacion)!
-                detailViewController.userDelegacion = (selectedUser.datos?.delegacion)!
-                detailViewController.userEstado = (selectedUser.datos?.estado)!
-                detailViewController.userCP = (selectedUser.datos?.cp)!
+                
+                
+                detailViewController.userCalle = selectedUser.datos?.calle ?? "Sin dato"
+                detailViewController.userNumero = selectedUser.datos?.numero ?? "Sin dato"
+                detailViewController.userColonia = selectedUser.datos?.colonia ?? "Sin dato"
+                detailViewController.userDelegacion = selectedUser.datos?.delegacion ?? "Sin dato"
+                detailViewController.userEstado = selectedUser.datos?.estado ?? "Sin dato"
+                detailViewController.userCP = selectedUser.datos?.cp ?? "Sin dato"
+                
+                //detailViewController.userImagen = selectedUser.datos?.imagen ?? "Sin dato"
+                
+                if (selectedUser.datos?.imagen) != nil{
+                    if let base64String = (selectedUser.datos?.imagen), let imageData = Data(base64Encoded: base64String.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")), let image = UIImage(data: imageData) {
+                        detailViewController.selfieImage = image
+                    }else{
+                        detailViewController.selfieImage = UIImage(named: "defaultImage")
+                    }
+                }
                 
             }
         }
