@@ -40,6 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var btnContinuaData: UIButton!
     @IBOutlet weak var btnContinuaContact: UIButton!
+    @IBOutlet weak var btnContinuaAdress: UIButton!
     @IBOutlet weak var btnFinaliza: UIButton!
     
     override func viewDidLoad() {
@@ -70,6 +71,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         cornerRadius(for:btnContinuaData)
         cornerRadius(for:btnContinuaContact)
+        cornerRadius(for: btnContinuaAdress)
         cornerRadius(for:btnFinaliza)
         
         padding(for: txtNameUser)
