@@ -12,6 +12,9 @@ import Eureka
 
 class DatosUserViewController: FormViewController {
     
+    let helper = Helper()
+    var userData: [String: Any] = [:]
+    
     var userName: String = ""
     var userApePat: String = ""
     var userApeMat: String = ""
@@ -38,18 +41,17 @@ class DatosUserViewController: FormViewController {
         form +++ Section()
         <<< ImageRow() { row in
             row.title = "Foto de usuario"
-            row.value = selfieImage
+            row.value = userData["selfieImage"] as? UIImage
             
             
         }.cellUpdate { cell, row in
             cell.accessoryView?.layer.cornerRadius = 25
-            //cell.accessoryView?.frame = CGRect(x: 100, y: 0, width: 100, height: 100)
         }
         +++ Section("Datos personales")
         
         <<< TextRow(){ row in
             row.title = "Nombre"
-            row.value = userName
+            row.value =  userData["userName"] as? String
             
         }.onChange({ (row) in
             
@@ -58,28 +60,27 @@ class DatosUserViewController: FormViewController {
         
         <<< TextRow(){ row in
             row.title = "Apellido Paterno"
-            row.value = userApePat
+            row.value = userData["userApePat"] as? String
         }
         
         <<< TextRow(){ row in
             row.title = "Apellido Materno"
-            row.value = userApeMat
+            row.value = userData["userApeMat"] as? String
         }
         
         +++ Section("Edad y cumpleaños")
         <<< TextRow(){ row in
             row.title = "Edad"
-            row.value = "\(userEdad)"
+            row.value = userData["userEdad"] as? String
         }
         
-        <<< TextRow(){ row in
-            
+        <<< DateRow(){ row in
             
             row.title = "Fecha de nacimiento"
             if userFechaNac != nil{
-                row.value = userFechaNac
+                row.value = helper.stringToDate(birthday: userData["userFechaNac"] as! String)
             }else{
-                row.value = "Sin dato"
+                
             }
             
         }
@@ -88,36 +89,36 @@ class DatosUserViewController: FormViewController {
         <<< TextRow(){ row in
             row.title = "Correo electrónico"
             
-            row.value = userMail
+            row.value = userData["userMail"] as? String
         }
         
         +++ Section("Domicilio")
         <<< TextRow(){ row in
             row.title = "Calle"
-            row.value = userCalle
+            row.value = userData["userCalle"] as? String
         }
         <<< TextRow(){ row in
             row.title = "Número"
-            row.value = userNumero
+            row.value = userData["userNumero"] as? String
         }
         <<< TextRow(){ row in
             row.title = "Colonia"
-                row.value = userColonia
+                row.value = userData["userColonia"] as? String
           
             
         }
         <<< TextRow(){ row in
             row.title = "Delegación"
-            row.value = userDelegacion
+            row.value = userData["userDelegacion"] as? String
        
         }
         <<< TextRow(){ row in
             row.title = "Estado"
-            row.value = userEstado
+            row.value = userData["userEstado"] as? String
         }
         <<< TextRow(){ row in
             row.title = "Código postal"
-            row.value = userCP
+            row.value = userData["userCP"] as? String
         }
         // Do any additional setup after loading the view.
     }
@@ -134,4 +135,16 @@ class DatosUserViewController: FormViewController {
      }
      */
     
+}
+extension UIViewController{
+    
+    func escondeTecladoTap(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func hideKeyboard(){
+        self.view.endEditing(true)
+    }
 }

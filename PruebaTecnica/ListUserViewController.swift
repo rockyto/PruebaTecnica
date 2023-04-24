@@ -61,7 +61,7 @@ class ListUserViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
         
-    
+        
         spinningActivity?.hide(true)
         return cell
     }
@@ -84,7 +84,7 @@ class ListUserViewController: UIViewController, UITableViewDataSource, UITableVi
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
-
+    
     public func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(false, animated: true)
         return true
@@ -103,37 +103,31 @@ class ListUserViewController: UIViewController, UITableViewDataSource, UITableVi
                 let selectedUser = filteredItems[indexPath.row]
                 let detailViewController = segue.destination as! DatosUserViewController
                 
-                detailViewController.userName = selectedUser.nombre!
-                detailViewController.userApePat = selectedUser.apellidoPaterno!
-                detailViewController.userApeMat = selectedUser.apellidoMaterno!
-                detailViewController.userMail = selectedUser.email!
-                detailViewController.userEdad = selectedUser.edad!
                 
+                var userData: [String: Any] = [:] // Define el diccionario
                 
-                detailViewController.userFechaNac = selectedUser.fechaNac!
+                userData["userName"] = selectedUser.nombre ?? "Sin dato"
+                userData["userApePat"] = selectedUser.apellidoPaterno ?? "Sin dato"
+                userData["userApeMat"] = selectedUser.apellidoMaterno ?? "Sin dato"
+                userData["userMail"] = selectedUser.email ?? "Sin dato"
+                userData["userEdad"] = selectedUser.edad ?? 0
+                userData["userFechaNac"] = selectedUser.fechaNac ?? "Sin dato"
+                userData["userCalle"] = selectedUser.datos?.calle ?? "Sin dato"
+                userData["userNumero"] = selectedUser.datos?.numero ?? "Sin dato"
+                userData["userColonia"] = selectedUser.datos?.colonia ?? "Sin dato"
+                userData["userDelegacion"] = selectedUser.datos?.delegacion ?? "Sin dato"
+                userData["userEstado"] = selectedUser.datos?.estado ?? "Sin dato"
+                userData["userCP"] = selectedUser.datos?.cp ?? "Sin dato"
                 
-                
-                detailViewController.userCalle = selectedUser.datos?.calle ?? "Sin dato"
-                detailViewController.userNumero = selectedUser.datos?.numero ?? "Sin dato"
-                detailViewController.userColonia = selectedUser.datos?.colonia ?? "Sin dato"
-                detailViewController.userDelegacion = selectedUser.datos?.delegacion ?? "Sin dato"
-                detailViewController.userEstado = selectedUser.datos?.estado ?? "Sin dato"
-                detailViewController.userCP = selectedUser.datos?.cp ?? "Sin dato"
-                
-                //detailViewController.userImagen = selectedUser.datos?.imagen ?? "Sin dato"
-                
-                if (selectedUser.datos?.imagen) != nil{
-                    if let base64String = (selectedUser.datos?.imagen), let imageData = Data(base64Encoded: base64String.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")), let image = UIImage(data: imageData) {
-                        detailViewController.selfieImage = image
-                    }else{
-                        detailViewController.selfieImage = UIImage(named: "defaultImage")
-                    }
+                if let base64String = selectedUser.datos?.imagen, let imageData = Data(base64Encoded: base64String.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")), let image = UIImage(data: imageData) {
+                    userData["selfieImage"] = image
+                } else {
+                    userData["selfieImage"] = UIImage(named: "defaultImage")
                 }
+                
+                detailViewController.userData = userData
                 
             }
         }
     }
-
-
-    
 }

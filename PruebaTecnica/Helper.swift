@@ -53,6 +53,16 @@ class Helper{
         return age!
     }
     
+    func stringToDate(birthday: String) -> Date {
+        
+        var cumple = birthday
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let laFecha: Date = dateFormatter.date(from: cumple) ?? Date()
+        
+        return laFecha
+    }
+    
     func showAlert(title: String, message: String, in vc: UIViewController) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
